@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/karolinaJot/circles-generator/static/js/main.fadc589e.js",
+    "static/js/787.78b93892.chunk.js": "/karolinaJot/circles-generator/static/js/787.78b93892.chunk.js",
+    "index.html": "/karolinaJot/circles-generator/index.html",
+    "main.fadc589e.js.map": "/karolinaJot/circles-generator/static/js/main.fadc589e.js.map",
+    "787.78b93892.chunk.js.map": "/karolinaJot/circles-generator/static/js/787.78b93892.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.fadc589e.js"
+  ]
+}
