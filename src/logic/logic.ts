@@ -1,11 +1,11 @@
-import Circle from "../components/Circle";
+import { ICirclesArray } from "../components/Board";
 
 export const getNewPosition = (): number[] => {
-    let screenWidth = window.innerWidth - 120;
-    let screenHeight = window.innerHeight - 120;
+    let screenWidth = window.innerWidth - 120; // 120 (to make sure that circle fit the screen size)
+    let screenHeight = window.innerHeight - 165; // 120 (to make sure that circle fit the screen size) + 45 (to make sure that buttons won't be overlap by circle)
 
     let x: number = Math.floor(Math.random() * screenWidth);
-    let y: number = Math.floor(Math.random() * screenHeight);
+    let y: number = (Math.floor(Math.random() * screenHeight)) + 45; // +45 (to make sure that buttons won't be overlap by circle - button at the top of screen)
 
     return [x, y];
 };
@@ -27,25 +27,19 @@ export const getRandomColor = (): string => {
     let color: string = '#' + Math.round(0xffffff * Math.random()).toString(16);
     return color;
 };
-
-export const validatePosition = (criclesArray: any[], centerPosition: number[]): boolean => {
-    console.log('validator wywołany')
+// make sure that new cricle doesn't overlap of other circle 
+export const validatePosition = (criclesArray: ICirclesArray[], centerPosition: number[]): boolean => {
     let isPositionValid: boolean = false;
-    let minValue = 80 * 80;
+    let minValue: number = 80 * 80;
     for (let i = 0; i < criclesArray.length; i++) {
-        // console.log(criclesArray[i].centerX, centerPosition[0]);
-        let a2 = (criclesArray[i].centerX - centerPosition[0]) * (criclesArray[i].centerX - centerPosition[0]);
-        // console.log(`a2= ${a2}`)
-        let b2 = (criclesArray[i].centerY - centerPosition[1]) * (criclesArray[i].centerY - centerPosition[1]);
-        // console.log(`b2= ${b2}`);
-        let c2 = a2 + b2;
-        // console.log(`c2= ${c2}`);
+        let a2: number = (criclesArray[i].centerX - centerPosition[0]) * (criclesArray[i].centerX - centerPosition[0]);
+        let b2: number = (criclesArray[i].centerY - centerPosition[1]) * (criclesArray[i].centerY - centerPosition[1]);
+        let c2: number = a2 + b2;
         if (c2 < minValue) {
             isPositionValid = false;
-            console.log(isPositionValid);
             break;
         } else isPositionValid = true;
     }
     return isPositionValid;
-}
+};
 
