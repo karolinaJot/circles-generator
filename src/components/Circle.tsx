@@ -4,12 +4,12 @@ const CircleBox = styled.div`
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    line-height: 80px;
-    font-size: 14px;
-    text-align: center;
-    vertical-align: middle;
+    font-size: 20px;
     position: absolute;
     background-color: #eeff00;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 `;
 interface ICircleProps {
     xValue: string,
@@ -23,7 +23,9 @@ const Circle = (props: ICircleProps) => {
             "top": props.yValue,
             "left": props.xValue,
             "backgroundColor": props.color
-        }}>lorem ipsum</CircleBox>
+        }}>
+            <p>lorem ipsum</p>
+        </CircleBox>
     );
 }
 export default Circle;

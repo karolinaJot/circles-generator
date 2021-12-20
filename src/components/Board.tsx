@@ -27,7 +27,7 @@ const RemoveButton = styled.button`
     color: #ffffff;
 `;
 
- export interface ICirclesArray {
+ export interface ICircle {
     x: number,
     y: number,
     centerX: number,
@@ -37,11 +37,11 @@ const RemoveButton = styled.button`
 
 const Board = () => {
 
-    const [circlesArray, setCirclesArray] = useState<ICirclesArray[]>([]);
+    const [circlesArray, setCirclesArray] = useState<ICircle[]>([]);
     const [arrayLenght, setArrayLenght] = useState<number>(0);
 
     const handleAddClick = () => {
-        let newColor: string = getRandomColor();
+        const newColor: string = getRandomColor();
         let newPosition: number[] = getNewPosition();
         let newCenterPosition: number[] = getCenterPosition(newPosition[0], newPosition[1]);
         if (arrayLenght === 0) {
@@ -77,8 +77,9 @@ const Board = () => {
 
     const handleDeleteClick = () => {
         if (arrayLenght === 0) return
-        circlesArray.pop();
-        setCirclesArray([...circlesArray]);
+        const tempArray: ICircle[] = [...circlesArray];
+        tempArray.pop();
+        setCirclesArray(tempArray)
         setArrayLenght(arrayLenght - 1);
     }
 
