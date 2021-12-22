@@ -30,29 +30,23 @@ const RemoveButton = styled.button`
  export interface ICircle {
     x: number,
     y: number,
-    centerX: number,
-    centerY: number,
     color: string
 }
 
 const Board = () => {
 
     const [circlesArray, setCirclesArray] = useState<ICircle[]>([]);
-    const [arrayLenght, setArrayLenght] = useState<number>(0);
-
+    
     const handleAddClick = () => {
         const newColor: string = getRandomColor();
         let newPosition: number[] = getNewPosition();
         let newCenterPosition: number[] = getCenterPosition(newPosition[0], newPosition[1]);
-        if (arrayLenght === 0) {
+        if (circlesArray.length === 0) {
             setCirclesArray([...circlesArray, {
                 x: newPosition[0],
                 y: newPosition[1],
-                centerX: newCenterPosition[0],
-                centerY: newCenterPosition[1],
                 color: newColor
             }]);
-            setArrayLenght(arrayLenght + 1);
         } else {
             let isPositionValid: boolean = validatePosition(circlesArray, newCenterPosition);
             let counter: number = 0;
@@ -66,21 +60,17 @@ const Board = () => {
                 setCirclesArray([...circlesArray, {
                     x: newPosition[0],
                     y: newPosition[1],
-                    centerX: newCenterPosition[0],
-                    centerY: newCenterPosition[1],
                     color: newColor
                 }]);
-                setArrayLenght(arrayLenght + 1);
             } else alert("Sorry, probably, there isn't enough room for new circle.")
         }
     }
 
     const handleDeleteClick = () => {
-        if (arrayLenght === 0) return
+        if (circlesArray.length === 0) return
         const tempArray: ICircle[] = [...circlesArray];
         tempArray.pop();
         setCirclesArray(tempArray)
-        setArrayLenght(arrayLenght - 1);
     }
 
     return (

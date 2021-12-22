@@ -29,11 +29,13 @@ export const getRandomColor = (): string => {
 };
 // make sure that new cricle doesn't overlap of other circle 
 export const validatePosition = (criclesArray: ICircle[], centerPosition: number[]): boolean => {
-    let isPositionValid: boolean = false;
+    let isPositionValid = false;
     const minValue: number = Math.pow(80, 2);
+    
     for (let i = 0; i < criclesArray.length; i++) {
-        const a2: number = Math.pow(criclesArray[i].centerX - centerPosition[0], 2);
-        const b2: number = Math.pow(criclesArray[i].centerY - centerPosition[1], 2);
+        const itemCenterPosition: number[] = getCenterPosition(criclesArray[i].x, criclesArray[i].y)
+        const a2: number = Math.pow(itemCenterPosition[0] - centerPosition[0], 2);
+        const b2: number = Math.pow(itemCenterPosition[1] - centerPosition[1], 2);
         const c2: number = a2 + b2;
         if (c2 < minValue) {
             isPositionValid = false;
