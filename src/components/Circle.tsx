@@ -1,16 +1,4 @@
-import styled from 'styled-components';
-
-const CircleBox = styled.div`
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    font-size: 20px;
-    position: absolute;
-    background-color: #eeff00;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-`;
+import { CircleBox } from '../styles/CircleStyles';
 interface ICircleProps {
     xValue: string,
     yValue: string,
@@ -18,6 +6,7 @@ interface ICircleProps {
 }
 
 const Circle = (props: ICircleProps) => {
+    
     return (
         <CircleBox style={{
             "top": props.yValue,

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
-
 import {
     getCenterPosition,
     getNewPosition,
@@ -8,24 +6,8 @@ import {
     validatePosition
 } from "../logic/logic";
 import Circle from "./Circle";
+import { AddButton, ButtonWrapper, RemoveButton } from "../styles/BoardStyles";
 
-const ButtonWrapper = styled.div`
-    text-align: center;
-    height: 40px;
-`;
-const AddButton = styled.button`
-    height: 100%;
-    margin-right: 10px;
-    background-color: #12be12;
-    color: #ffffff;
-`;
-
-const RemoveButton = styled.button`
-    height: 100%;
-    margin-left: 10px;
-    background-color: #e20d0d;
-    color: #ffffff;
-`;
 
  export interface ICircle {
     x: number,
